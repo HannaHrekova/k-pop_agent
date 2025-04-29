@@ -20,11 +20,11 @@ This is a simple chatbot webhook built with **Flask** that integrates with **Dia
 
 #### 📁 Project Structure
 
-├── app.py # Main Flask app (Dialogflow webhook) 
-├── kpop_agent.py # Logic to fetch K-pop releases 
-├── requirements.txt # Required dependencies 
-├── .env # (Not included!) Holds API keys or configs 
-└── README.md
+--├── app.py # Main Flask app (Dialogflow webhook) 
+--├── kpop_agent.py # Logic to fetch K-pop releases 
+--├── requirements.txt # Required dependencies 
+--├── .env # (Not included!) Holds API keys or configs 
+--└── README.md
 
 > ⚠️ `.env` is **not included** in the repository for security reasons. You must provide your own.
 
