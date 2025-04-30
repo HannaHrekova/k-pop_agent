@@ -35,6 +35,15 @@ def get_kpop_releases(limit=10):
         response.raise_for_status()
         data = response.json()
 
+        print("==== YouTube API returned items: ====")
+        for item in data.get("items", []):
+            kind = item["id"].get("kind")
+            video_id = item["id"].get("videoId")
+            title = item["snippet"]["title"]
+            channel = item["snippet"]["channelTitle"]
+            print(f"Kind: {kind}, Title: {title}, Channel: {channel}, Video ID: {video_id}")
+        print("======================================")
+
         if "items" not in data:
             return "Unable to get new K-pop releases."
 
