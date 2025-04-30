@@ -5,32 +5,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-cached_result = None
-last_update_time = None
-CACHE_TTL_MINUTES = 15
-
 def get_kpop_releases(limit=10):
-    global cached_result, last_update_time
-
-    now = datetime.utcnow()
-    if cached_result and last_update_time and (now - last_update_time).seconds < CACHE_TTL_MINUTES * 60:
-        return cached_result
-
     API_KEY = os.getenv("YOUTUBE_API_KEY")
     if not API_KEY:
         return "API key is missing. Please set the YOUTUBE_API_KEY environment variable."
 
     url = "https://www.googleapis.com/youtube/v3/search"
-    one_week_ago = (now - timedelta(days=7)).isoformat() + "Z"
+    one_week_ago = (datetime.utcnow() - timedelta(days=7)).isoformat() + "Z"
 
     params = {
         "part": "snippet",
-        "q": "K-pop MV",
+        "q": "kpop",
         "type": "video",
-        "maxResults": limit,
+        "maxResults": 25,
         "order": "date",
         "publishedAfter": one_week_ago,
-        "videoCategoryId": "10",
         "key": API_KEY,
     }
 
@@ -42,33 +31,31 @@ def get_kpop_releases(limit=10):
     ]
 
     try:
-        response = requests.get(url, params=params, timeout=3)
+        response = requests.get(url, params=params)
         response.raise_for_status()
         data = response.json()
 
         if "items" not in data:
-            cached_result = "Unable to get new K-pop releases."
-        else:
-            releases = []
-            for item in data["items"]:
-                video_id = item["id"].get("videoId")
-                if not video_id:
-                    continue 
+            return "Unable to get new K-pop releases."
 
-                title = item["snippet"]["title"]
-                channel = item["snippet"]["channelTitle"]
-                link = f"https://www.youtube.com/watch?v={video_id}"
+        releases = []
+        for item in data["items"]:
+            video_id = item["id"].get("videoId")
+            if not video_id:
+                continue
 
-                if channel in official_kpop_channels and "reaction" not in title.lower():
-                    releases.append(f"{title} → {link}")
-                if len(releases) >= limit:
-                    break
+            title = item["snippet"]["title"]
+            channel = item["snippet"]["channelTitle"]
+            link = f"https://www.youtube.com/watch?v={video_id}"
 
-            cached_result = "\n".join(releases) if releases else "There are no new official releases."
+            if "reaction" not in title.lower():
+                prefix = "⭐ " if channel in official_kpop_channels else ""
+                releases.append(f"{prefix}{title} → {link}")
 
-        last_update_time = now
-        return cached_result
+            if len(releases) >= limit:
+                break
 
+        return "\n".join(releases) if releases else "There are no new official releases."
     except requests.exceptions.RequestException as e:
         return f"HTTP Error: {str(e)}"
     except Exception as e:
