@@ -1,4 +1,9 @@
 Flask
-requests
+Flask-Cors
+langchain-huggingface
+langchain-community
 python-dotenv
-flask-cors
+requests
+pydantic
+gunicorn
+
