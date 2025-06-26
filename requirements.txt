@@ -6,4 +6,4 @@ python-dotenv
 requests
 pydantic
 gunicorn
-
+duckduckgo-search
