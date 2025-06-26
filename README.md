@@ -54,7 +54,7 @@ Create a .env file in the root directory (for local development) or set environm
 
 #### 🧪 Example Dialogflow Setup
 
-While the agent dynamically uses tools, you'd typically have intents like:
+- While the agent dynamically uses tools, you'd typically have intents like:
     - Intent Name: Kpop Releases (with training phrases like "show new kpop releases", "latest mvs", "recent comebacks")
         - Fulfillment: Webhook enabled.
     - Intent Name: Kpop News (with training phrases like "what's new with BTS?", "tell me about Aespa's new song", "any news about Blackpink's comeback?")
