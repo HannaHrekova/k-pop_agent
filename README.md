@@ -38,7 +38,7 @@ This is a personal pet project – an intelligent K-pop AI agent built as a webh
 
 #### ⚠️ Important: Environment Variables
 
-For security reasons, the .env file is not included in this repository. You must provide your own API keys for the services used.
+- For security reasons, the .env file is not included in this repository. You must provide your own API keys for the services used.
 Create a .env file in the root directory (for local development) or set environment variables directly on your hosting platform (e.g., Render) for:
     - HUGGINGFACEHUB_API_TOKEN: Your Hugging Face API token for LLM access.
     - YOUTUBE_API_KEY: Your Google Cloud / YouTube Data API v3 key.
