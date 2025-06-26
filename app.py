@@ -1,3 +1,9 @@
+from kpop_agent import process_dialogflow_request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import os
+import json
+
 app = Flask(__name__)
 CORS(app)
 
