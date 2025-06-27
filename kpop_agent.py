@@ -153,6 +153,7 @@ def get_kpop_releases(limit=10, search_period_days=7, filter_by_official_channel
 def process_dialogflow_request(user_message: str):
     # Initializes the message list, starting with the system prompt for the LLM.
     # This prompt instructs the LLM on its behavior and how to use the tools.
+    print(f"DEBUG: process_dialogflow_request received user_message: '{user_message}'")
     messages_to_process = [SystemMessage(content="""
     You are a personal AI assistant named Jisoo, specializing exclusively in K-pop news and releases. Your goal is to answer user queries accurately and efficiently by using the available tools.
 
