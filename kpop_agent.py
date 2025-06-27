@@ -42,6 +42,7 @@ llm_model = HuggingFaceEndpoint(
     # max_new_tokens=1024 # Keep commented out for now
 )
 chat = ChatHuggingFace(llm=llm_model)
+print("DEBUG: LLM (ChatHuggingFace) initialized.")
 
 # --- Tools ---
 # These are the external functionalities that the LLM can call upon to gather information.
@@ -212,6 +213,7 @@ def process_dialogflow_request(user_message: str):
     # and decides whether to call a tool or respond directly.
     try:
         ai_message = chat_with_tools.invoke(messages_to_process)
+        print(f"DEBUG: AI's initial decision (ai_message): {ai_message}")
     except Exception as e:
         print(f"ERROR: LLM invocation failed: {str(e)}")
         return "Sorry, I'm having trouble with my brain right now. Please try again later."
@@ -250,6 +252,7 @@ def process_dialogflow_request(user_message: str):
         
         try:
             final_ai_message = chat.invoke(final_response_messages)
+            print(f"DEBUG: Final AI message content before returning: {final_ai_message.content}")
             return final_ai_message.content
         except Exception as e:
             print(f"ERROR: Final LLM invocation after tool failed: {str(e)}")
