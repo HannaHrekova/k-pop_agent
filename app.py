@@ -20,15 +20,12 @@ def webhook():
         if not user_message:
             print("ERROR: Could not parse user_message from Dialogflow request. Request body:")
             print(json.dumps(req, indent=2))
-            return jsonify({"fulfillmentText": "Sorry, I couldn't understand your request (no user message found)."}), 400 # Повертаємо 400 Bad Request
-
-        # Passing the user request to the agent
-        fulfillment_text = process_dialogflow_request(user_message)
+            return jsonify({"fulfillmentText": "Sorry, I couldn't understand your request (no user message found)."}), 400
 
     except Exception as e:
-        print(f"ERROR: Unhandled exception in webhook: {str(e)}") # Logging an error
+        print(f"ERROR: Unhandled exception in webhook: {str(e)}")
         fulfillment_text = f"Sorry, there was an internal error processing your request: {str(e)}"
-        return jsonify({"fulfillmentText": fulfillment_text}), 500 # Return 500 Internal Server Error
+        return jsonify({"fulfillmentText": fulfillment_text}), 500
 
     # Form an answer for Dialogflow
     # Dialogflow expects the "fulfillmentText" key for a simple text response
