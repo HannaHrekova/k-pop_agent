@@ -167,15 +167,12 @@ def process_dialogflow_request(user_message: str):
         * If this tool returns "no_youtube_results_found", tell the user "Sorry, I couldn't find any new K-pop releases for the specified period on YouTube."
 
     2.  **`web_search`**:
-        * **Use this for ALL other K-pop related queries that are NOT about new YouTube music videos.** This includes:
-            * General K-pop news, comeback announcements, debut information.
-            * Questions about specific groups or artists (e.g., "Tell me about BTS's latest activities", "When is BLACKPINK's next comeback?").
-            * Questions about future releases or general K-pop trends.
-            * Any K-pop query where `get_kpop_releases_tool` is not suitable.
-        * **Input parameter**: `query` (string).
-        * **Example**: If the user asks "What is new with BTS?", you should call `web_search(query='BTS latest news and activities')`.
-        * **Always specify a timeframe (e.g., "this month", "today", "last week") in your search query if the user asks for "new" or "latest" information (unless it's an MV, then use `get_kpop_releases_tool`).**
-
+    * **Use this for ALL other K-pop related queries, especially general news, comeback announcements, debut information, or any "what's new" type of question that is NOT specifically about YouTube music videos.**
+    * **Input parameter**: `query` (string).
+    * **Crucial for "what's new" queries**: When a user asks "What's new in K-pop?" or similar, formulate the `query` for web_search to include a specific timeframe, e.g., "latest K-pop news this week", "K-pop comebacks June 2025", or "today's K-pop headlines". Avoid overly general queries like just "K-pop news".
+    * **Example**: If the user asks "What's new in K-pop?", you should call `web_search(query='latest K-pop news this week')`.
+    * If this tool returns an error or irrelevant results, try reformulating the query or state that current information is limited.
+  
     3.  **`youtube_video_qa`**:
         * **Use this ONLY if the user asks a very specific question ABOUT A GIVEN YOUTUBE VIDEO URL.** For example, "What is this video about: [URL]?".
         * **Input parameters**: `url` (string), `question` (string).
