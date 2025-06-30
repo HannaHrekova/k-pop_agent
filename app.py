@@ -9,6 +9,7 @@ CORS(app) # Enable CORS for all routes
 
 @app.route("/", methods=["POST"])
 def webhook():
+    print("DEBUG: Webhook function entered. Attempting to process request.")
     # Initialize fulfillment_text with a default error message
     fulfillment_text = "Sorry, something went wrong with the K-pop agent. Please try again later."
     status_code = 500 # Default to 500 Internal Server Error
