@@ -2,6 +2,7 @@ import os
 import requests
 from datetime import datetime, timedelta, UTC
 from dotenv import load_dotenv
+import logging
 import random # Not used in the provided code, but kept if it was intended for future use.
 
 # --- Langchain and Hugging Face Imports ---
@@ -42,7 +43,7 @@ llm_model = HuggingFaceEndpoint(
     # max_new_tokens=1024 # Keep commented out for now
 )
 chat = ChatHuggingFace(llm=llm_model)
-print("DEBUG: LLM (ChatHuggingFace) initialized.")
+logging.debug("LLM (ChatHuggingFace) initialized.")
 
 # --- Tools ---
 # These are the external functionalities that the LLM can call upon to gather information.
@@ -154,7 +155,7 @@ def get_kpop_releases(limit=10, search_period_days=7, filter_by_official_channel
 def process_dialogflow_request(user_message: str):
     # Initializes the message list, starting with the system prompt for the LLM.
     # This prompt instructs the LLM on its behavior and how to use the tools.
-    print(f"DEBUG: process_dialogflow_request received user_message: '{user_message}'")
+    logging.debug(f"DEBUG: process_dialogflow_request received user_message: '{user_message}'")
     messages_to_process = [SystemMessage(content="""
     You are a personal AI assistant named Jisoo, specializing exclusively in K-pop news and releases. Your goal is to answer user queries accurately and efficiently by using the available tools.
 
@@ -210,9 +211,9 @@ def process_dialogflow_request(user_message: str):
     # and decides whether to call a tool or respond directly.
     try:
         ai_message = chat_with_tools.invoke(messages_to_process)
-        print(f"DEBUG: AI's initial decision (ai_message): {ai_message}")
+        logging.debug(f"DEBUG: AI's initial decision (ai_message): {ai_message}")
     except Exception as e:
-        print(f"ERROR: LLM invocation failed: {str(e)}")
+        logging.debug(f"ERROR: LLM invocation failed: {str(e)}")
         return "Sorry, I'm having trouble with my brain right now. Please try again later."
 
 
@@ -224,7 +225,7 @@ def process_dialogflow_request(user_message: str):
         tool_args = tool_call["args"]
         tool_output = None
         
-        print(f"DEBUG: LLM requested tool: {tool_name} with args: {tool_args}") # For debugging purposes
+        logging.debug(f"DEBUG: LLM requested tool: {tool_name} with args: {tool_args}") # For debugging purposes
 
         # Execute the corresponding tool
         if tool_name == "get_kpop_releases_tool":
@@ -237,7 +238,7 @@ def process_dialogflow_request(user_message: str):
         else:
             return "Sorry, I tried to use an unknown tool."
 
-        print(f"DEBUG: Tool '{tool_name}' output: {tool_output}") # For debugging purposes
+        logging.debug(f"DEBUG: Tool '{tool_name}' output: {tool_output}") # For debugging purposes
 
         # Pass the tool's execution result back to the LLM,
         # so it can formulate a final, understandable response.
@@ -249,10 +250,10 @@ def process_dialogflow_request(user_message: str):
         
         try:
             final_ai_message = chat.invoke(final_response_messages)
-            print(f"DEBUG: Final AI message content before returning: {final_ai_message.content}")
+            logging.debug(f"DEBUG: Final AI message content before returning: {final_ai_message.content}")
             return final_ai_message.content
         except Exception as e:
-            print(f"ERROR: Final LLM invocation after tool failed: {str(e)}")
+            logging.debug(f"ERROR: Final LLM invocation after tool failed: {str(e)}")
             # Handle specific error markers from our tools
             if "no_youtube_results_found" in str(tool_output):
                 return "Sorry, I couldn't find any new K-pop releases for the specified period on YouTube."
