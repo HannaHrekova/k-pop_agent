@@ -55,9 +55,9 @@ Create a .env file in the root directory (for local development) or set environm
 #### ✨ Agent demonstration:
 
 <p align="center">
-  <img src="Screenshots/Dreamcatcher.png" width="300" alt="Dialogflow Agent Screenshot 1">
-  <img src="Screenshots/Earthquake.png" width="300" alt="Dialogflow Agent Screenshot 2">
-  <img src="Screenshots/Jennie.png" width="300" alt="Dialogflow Agent Screenshot 3">
+  <img src="Screenshots/Dreamcatcher.png" width="250" alt="Dialogflow Agent Screenshot 1">
+  <img src="Screenshots/Earthquake.png" width="250" alt="Dialogflow Agent Screenshot 2">
+  <img src="Screenshots/Jennie.png" width="250" alt="Dialogflow Agent Screenshot 3">
 </p>
 
 #### 🧪 Example Dialogflow Setup
