@@ -157,7 +157,7 @@ def process_dialogflow_request(user_message: str):
     # This prompt instructs the LLM on its behavior and how to use the tools.
     logging.debug(f"DEBUG: process_dialogflow_request received user_message: '{user_message}'")
     messages_to_process = [SystemMessage(content="""
-    You are a personal AI assistant named Jisoo, specializing exclusively in K-pop news and releases. Your goal is to answer user queries accurately and efficiently by using the available tools.
+    You are a personal AI assistant, specializing exclusively in K-pop news and releases. Your goal is to answer user queries accurately and efficiently by using the available tools.
 
     You have access to the following tools:
 
