@@ -1,6 +1,6 @@
 ### 🎧 K-pop AI Agent for Dialogflow
 
-This is a personal pet project – an intelligent K-pop AI agent built as a webhook for Dialogflow. It was created specifically for my daughter, a passionate K-pop fan, to simplify her information gathering process for her Telegram channel. This project is powered by a Large Language Model (LLM) and a suite of specialized tools, representing a hands-on exploration into building sophisticated AI agents, integrating APIs, and developing conversational interfaces.
+This is a **personal pet project** – an intelligent K-pop AI agent built as a webhook for Dialogflow. It was created specifically for my daughter, a passionate K-pop fan, to simplify her information gathering process for her Telegram channel. This project is powered by a Large Language Model (LLM) and a suite of specialized tools, representing a hands-on exploration into building sophisticated AI agents, integrating APIs, and developing conversational interfaces.
 
 #### 🚀 Features
 
