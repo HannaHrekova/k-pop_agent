@@ -52,6 +52,14 @@ Create a .env file in the root directory (for local development) or set environm
 - Tool Execution: If a tool is called (e.g., for "new kpop releases" or "what's new with BTS?"), the agent executes the corresponding Python function to fetch external data.
 - Final Response: The results from the tool (or the LLM's direct answer) are fed back to the LLM, which then forms a concise and helpful fulfillment message, sent back to Dialogflow and ultimately to the user.
 
+#### ✨ Agent demonstration:
+
+<p align="center">
+  <img src="Screenshots/Dreamcatcher.png" width="300" alt="Dialogflow Agent Screenshot 1">
+  <img src="Screenshots/Earthquake.png" width="300" alt="Dialogflow Agent Screenshot 2">
+  <img src="Screenshots/Jennie.png" width="300" alt="Dialogflow Agent Screenshot 3">
+</p>
+
 #### 🧪 Example Dialogflow Setup
 
 - While the agent dynamically uses tools, you'd typically have intents like:
