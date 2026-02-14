@@ -26,6 +26,23 @@ This is a **personal pet project** – an intelligent K-pop AI agent built as a 
 - python-dotenv: For local environment variable management.
 - Hosted on Render: For easy deployment of the web service.
 
+#### 🧠 Prompt & Agent Design
+
+The agent relies on a structured system prompt to:
+- enforce strict domain specialization (K-pop only)
+- control tone and response format
+- reduce off-topic or speculative answers
+- guide tool selection through explicit tool descriptions
+
+Tool descriptions are intentionally designed to bias the LLM toward correct routing decisions based on user intent, improving reliability of tool invocation within the LangChain agent framework.
+
+#### 🧠 What I Learned
+
+- Designing effective tool descriptions significantly impacts LLM routing behavior and reduces incorrect tool invocation.
+- Strict domain-constrained system prompts help mitigate off-domain or speculative responses.
+- Dialogflow intent detection and LLM-based reasoning must be carefully aligned to avoid conflicting interpretations of user input.
+- Tool-augmented agents require explicit guardrails to maintain consistency, response style, and predictable output structure.
+
 #### 📁 Project Structure
 
 ```
@@ -77,8 +94,8 @@ Create a .env file in the root directory (for local development) or set environm
 
 #### 📚 Status
 
-📌 **An advanced pet project and prototype in active development**  
-I'm continuously learning AI engineering and exploring how to build robust, intelligent conversational agents. This project serves as a dynamic sandbox for experimentation and creativity ✨.
+📌 **An advanced AI agent prototype demonstrating tool orchestration and prompt-driven behavior**  
+This project showcases practical implementation of tool-augmented LLM agents, combining structured prompt engineering, external API integration, and controlled response generation. It serves as a hands-on demonstration of building reliable, domain-specialized conversational AI systems using modern LLM frameworks.
 
 #### 🤖 About Jisoo, the K-pop AI Agent
 
