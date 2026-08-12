@@ -7,6 +7,7 @@ import logging
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage, ToolMessage
 from langchain_core.tools import tool, Tool
 from langchain_community.tools import DuckDuckGoSearchRun, YouTubeSearchTool
+from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 from langchain_cohere import ChatCohere
 from pydantic import BaseModel, Field
 
@@ -26,7 +27,8 @@ chat = ChatCohere(
 logging.debug("LLM (ChatCohere) initialized.")
 
 # --- Base Tools ---
-_ddg_search = DuckDuckGoSearchRun()
+wrapper = DuckDuckGoSearchAPIWrapper(max_results=2)
+_ddg_search = DuckDuckGoSearchRun(api_wrapper=wrapper)
 _yt_search = YouTubeSearchTool()
 
 @tool
