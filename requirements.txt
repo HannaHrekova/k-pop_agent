@@ -9,4 +9,5 @@ pydantic
 gunicorn
 duckduckgo-search
 youtube-search-python
+ddgs
 
