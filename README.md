@@ -9,7 +9,7 @@ This is a **personal pet project** – an intelligent K-pop AI agent built as a 
 
     - New K-pop Releases: Fetches the latest K-pop music videos from YouTube.
     - General K-pop News: Performs web searches for news, comebacks, artist activities, and more.
-    - YouTube Video Q&A: Answers specific questions about provided YouTube video URLs.
+    - YouTube Video Q&A: Searches for specific YouTube videos, official MV content, and performances using tailored search queries.
 
 - Dialogflow Integration: Connects seamlessly with Dialogflow as a webhook for robust intent management and natural language understanding.
 - Built for Scalability: Ready for deployment on cloud platforms like Render.
@@ -20,7 +20,7 @@ This is a **personal pet project** – an intelligent K-pop AI agent built as a 
 - Flask & Flask-CORS: For the webhook server.
 - Dialogflow (Google Cloud): For NLU and conversational flow management.
 - LangChain: Framework for building LLM-powered applications.
-- Hugging Face Inference API: Powers the Large Language Model (CohereLabs/c4ai-command-r-v01).
+- Cohere API (via langchain-cohere): Powers the Large Language Model (command-r-plus-08-2024).
 - DuckDuckGo Search API (via LangChain): For general web searches.
 - YouTube Data API (v3): For fetching K-pop music videos and performing video QA.
 - python-dotenv: For local environment variable management.
@@ -57,7 +57,7 @@ Tool descriptions are intentionally designed to bias the LLM toward correct rout
 
 - For security reasons, the .env file is not included in this repository. You must provide your own API keys for the services used.
 Create a .env file in the root directory (for local development) or set environment variables directly on your hosting platform (e.g., Render) for:
-    - HUGGINGFACEHUB_API_TOKEN: Your Hugging Face API token for LLM access.
+    - COHERE_API_KEY: Your Cohere API token for LLM access.
     - YOUTUBE_API_KEY: Your Google Cloud / YouTube Data API v3 key.
 
 #### 📡 How It Works
@@ -84,7 +84,7 @@ Create a .env file in the root directory (for local development) or set environm
         - Fulfillment: Webhook enabled.
     - Intent Name: Kpop News (with training phrases like "what's new with BTS?", "tell me about Aespa's new song", "any news about Blackpink's comeback?")
         - Fulfillment: Webhook enabled.
-    - Intent Name: YouTube Video Question (with training phrases like "what is this video about [URL]?", "summarize [URL]")
+    - Intent Name: YouTube Video Question (with training phrases like "find the new video from Aespa", "summarize [URL]")
         - Fulfillment: Webhook enabled.
 
 #### 🔐 Security Notes
@@ -99,7 +99,7 @@ This project showcases practical implementation of tool-augmented LLM agents, co
 
 #### 🤖 About Jisoo, the K-pop AI Agent
 
-Jisoo is the name of the AI agent created within this project. She is built on the LangChain framework, leveraging the capabilities of a Hugging Face LLM (CohereLabs/c4ai-command-r-v01). Jisoo's core intelligence lies in her ability to dynamically select and use external tools like web search and the YouTube Data API to answer user queries. Her personality and specialization are meticulously defined through a system prompt, making her an expert in K-pop news and releases.
+Jisoo is the name of the AI agent created within this project. She is built on the LangChain framework, leveraging the capabilities of Cohere's Command R+ model (command-r-plus-08-2024). Jisoo's core intelligence lies in her ability to dynamically select and use external tools like web search and the YouTube Data API to answer user queries. Her personality and specialization are meticulously defined through a system prompt, making her an expert in K-pop news and releases.
 
 #### [You can test Jisoo in action here](https://huggingface.co/spaces/HannaHrekova/Agent_for_finding_new_releases)
 
