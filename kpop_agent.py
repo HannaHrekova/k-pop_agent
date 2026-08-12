@@ -18,7 +18,7 @@ if not cohere_api_key:
     cohere_api_key = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
 
 chat = ChatCohere(
-    model="command-r-plus-08-2024",
+    model="command-r",
     cohere_api_key=cohere_api_key,
     temperature=0.2,
     max_tokens=300
