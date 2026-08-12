@@ -20,7 +20,7 @@ This is a **personal pet project** – an intelligent K-pop AI agent built as a 
 - Flask & Flask-CORS: For the webhook server.
 - Dialogflow (Google Cloud): For NLU and conversational flow management.
 - LangChain: Framework for building LLM-powered applications.
-- Cohere API (via langchain-cohere): Powers the Large Language Model (command-r-plus-08-2024).
+- Cohere API (via langchain-cohere): Powers the Large Language Model (command-r-08-2024).
 - DuckDuckGo Search API (via LangChain): For general web searches.
 - YouTube Data API (v3): For fetching K-pop music videos and performing video QA.
 - python-dotenv: For local environment variable management.
