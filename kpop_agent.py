@@ -20,7 +20,8 @@ if not cohere_api_key:
 chat = ChatCohere(
     model="command-r-plus-08-2024",
     cohere_api_key=cohere_api_key,
-    temperature=0.2
+    temperature=0.2,
+    max_tokens=300
 )
 logging.debug("LLM (ChatCohere) initialized.")
 
@@ -76,7 +77,7 @@ def get_kpop_releases(limit=10, search_period_days=7, filter_by_official_channel
     exclude_keywords = ["reaction", "cover", "fanmade", "edit", "lyrics", "compilation", "unboxing", "dance practice", "short"]
 
     try:
-        response = requests.get(url, params=params, timeout=10)
+        response = requests.get(url, params=params, timeout=4)
         response.raise_for_status()
         data = response.json()
 
