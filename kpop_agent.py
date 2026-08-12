@@ -167,7 +167,7 @@ General Rules:
     all_tools = [web_search, youtube_video_qa, get_kpop_releases_tool]
     chat_with_tools = chat.bind_tools(all_tools)
 
-    response = chat.invoke(user_query)
+    response = chat.invoke(messages_to_process)
     return response.content
     # try:
         # ai_message = chat_with_tools.invoke(messages_to_process)
