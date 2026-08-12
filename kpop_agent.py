@@ -167,12 +167,14 @@ General Rules:
     all_tools = [web_search, youtube_video_qa, get_kpop_releases_tool]
     chat_with_tools = chat.bind_tools(all_tools)
 
-    try:
-        ai_message = chat_with_tools.invoke(messages_to_process)
-        logging.debug(f"DEBUG: AI's initial decision: {ai_message}")
-    except Exception as e:
-        logging.error(f"ERROR: LLM invocation failed: {str(e)}")
-        return "Sorry, I'm having trouble processing your request right now. Please try again later."
+    response = chat.invoke(user_query)
+    return response.content
+    # try:
+        # ai_message = chat_with_tools.invoke(messages_to_process)
+        # logging.debug(f"DEBUG: AI's initial decision: {ai_message}")
+    # except Exception as e:
+       # logging.error(f"ERROR: LLM invocation failed: {str(e)}")
+       # return "Sorry, I'm having trouble processing your request right now. Please try again later."
 
     if hasattr(ai_message, "tool_calls") and ai_message.tool_calls:
         tool_call = ai_message.tool_calls[0]
