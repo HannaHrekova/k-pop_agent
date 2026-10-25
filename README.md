@@ -16,7 +16,7 @@ This is a **personal pet project** – an intelligent K-pop AI agent built as a 
 
 #### 🛠️ Tech Stack
 
-- Python 3.10+
+- Python 3.11+
 - Flask & Flask-CORS: For the webhook server.
 - Dialogflow (Google Cloud): For NLU and conversational flow management.
 - LangChain: Framework for building LLM-powered applications.
